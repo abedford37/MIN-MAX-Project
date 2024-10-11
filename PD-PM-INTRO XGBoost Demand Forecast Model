@@ -1,0 +1,61 @@
+# Predicting Demand Quantities for PD, PM, INTRO Status Items 
+# Created by Ashley Bedford
+
+# This project uses actual demand data over the past 10 weeks (Weeks -14 to -5) to predict demand for the past
+# 4 weeks (Weeks -4 to -1) for all products. A total 14-week window is used, equating to a trailing quarter.
+# The XGBoost Model tracks historical data over time to improve prediction results. This is applied to AA, A, and B items
+# with at least 14 weeks of sales data available.
+
+import os
+import pickle
+import numpy as np
+import pandas as pd
+
+# Load sales data from a CSV file or other source
+# Example: df = pd.read_csv('sales_data.csv')
+df = pd.DataFrame(input_table_1.copy())  # KNIME Input Table is used here.
+
+# Replace missing values (NaN) with 0 for the last 14 weeks of sales data
+for week in range(-1, -15, -1):
+    df[str(week)] = df[str(week)].fillna(0)
+
+# Iterate through the data to update predictions
+for i, row in df.iterrows():
+
+    # Clean up grouping name for file path compatibility
+    group_name = f"{row['Grouping'].replace('/', '_')}.pkl"
+
+    # Set the model path
+    path = os.path.join(flow_variables['knime.workspace'], group_name)
+
+    # Check if 'date&time diff' is NaN
+    if pd.isna(row['date&time diff']):
+        continue
+
+    # Calculate active weeks from today
+    weeks_active = int(row['date&time diff'])
+
+    if os.path.exists(path):
+        # Load the existing model
+        with open(path, 'rb') as model_file:
+            model = pickle.load(model_file)
+
+        # Predict and update missing values for inactive weeks
+        if weeks_active <= 0:
+            for y in range(-14, 0):
+                y_str = str(y)
+                if row[y_str] == 0:
+                    df.at[i, y_str] = model.predict([[row[y_str]]])[0]  # Use the model to predict
+        else:
+            # Predict and update values for active weeks
+            for y in range(-(weeks_active + 1), -15, -1):
+                y_str = str(y)
+                if row[y_str] == 0:
+                    df.at[i, y_str] = model.predict([[row[y_str]]])[0]
+
+# 2 OUTPUT OPTIONS
+# OPTION 1: Output the updated DataFrame in Knime
+output_table_1 = df.copy()
+
+# OPTION 2: Save the result to a file:
+# df.to_csv('output_sales_predictions.csv', index=False)
