@@ -1,0 +1,117 @@
+# Predicting Demand for Exclusive Items
+# Created by Ashley Bedford
+
+# This project predicts demand for the past 4 weeks (-4 through -1) using the previous 10 weeks (-14 through -5)
+# of actual demand data for products. A total of 14 weeks are used, and XGBoost tracks historical data for improved predictions.
+
+import os
+import pickle
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, concat
+from xgboost import XGBRegressor
+from sklearn.metrics import mean_absolute_error
+import matplotlib.pyplot as plt
+
+# Function to transform a time series dataset into a supervised learning dataset
+def series_to_supervised(data, n_in=1, n_out=1, dropnan=True):
+    df = DataFrame(data)
+    cols = []
+    # Input sequence (t-n, ... t-1)
+    for i in range(n_in, 0, -1):
+        cols.append(df.shift(i))
+    # Forecast sequence (t, t+1, ... t+n)
+    for i in range(0, n_out):
+        cols.append(df.shift(-i))
+    # Put it all together
+    agg = concat(cols, axis=1)
+    if dropnan:
+        agg = agg.iloc[:, -3:]
+        agg.dropna(inplace=True)
+        agg = agg.iloc[:, [True, False, True]]
+    return agg.values
+
+# Walk-forward validation for univariate data
+def walk_forward_validation(data, n_test, model_path):
+    predictions = []
+    train, test = data[:-n_test, :], data[-n_test:, :]
+    history = [x for x in train]
+
+    for i in range(len(test)):
+        testX, testy = test[i, :-1], test[i, -1]
+        yhat, model = xgboost_forecast(history, testX, model_path)
+        predictions.append(yhat)
+        history.append(test[i])
+
+    error = mean_absolute_error(test[:, -1], predictions)
+    return error, test[:, 1], predictions, model
+
+# Fit the XGBoost model and make a one-step prediction
+def xgboost_forecast(train, testX, model_path):
+    train = np.asarray(train)
+    trainX, trainy = train[:, :-1], train[:, -1]
+
+    if os.path.exists(model_path):
+        with open(model_path, 'rb') as model_file:
+            model = pickle.load(model_file)
+    else:
+        model = XGBRegressor(objective='reg:squarederror', n_estimators=1000)
+        model.fit(trainX, trainy)
+        with open(model_path, 'wb') as model_file:
+            pickle.dump(model, model_file)
+
+    yhat = model.predict([testX])
+    return yhat[0], model
+
+# Load sales data
+df = pd.DataFrame(input_table_1.copy())  # Replace with actual input mechanism like pd.read_csv()
+
+# Fill missing values (NaN) with 0 for the last 14 weeks
+for week in range(-1, -15, -1):
+    df[str(week)] = df[str(week)].fillna(0)
+
+# Group by 'Grouping' column to apply the model for each group of items
+grouped = df.groupby('Grouping')
+output_model_list = []
+mae_list = []
+model_num = 1
+
+# Iterate over each group in the data
+for group_name, group_df in grouped:
+    group_name = group_name.replace('/', '_') + '.pkl'
+    group_values = group_df.values
+
+    # Iterate through each item in the group
+    for item_vals in group_values:
+        new_data = [[-14, item_vals[6]], [-13, item_vals[7]], [-12, item_vals[8]], [-11, item_vals[9]],
+                    [-10, item_vals[10]], [-9, item_vals[11]], [-8, item_vals[12]], [-7, item_vals[13]], 
+                    [-6, item_vals[14]], [-5, item_vals[15]], [-4, item_vals[16]], [-3, item_vals[17]], 
+                    [-2, item_vals[18]], [-1, item_vals[19]]]
+
+        test_df = pd.DataFrame(new_data, columns=['time', 'measure'])
+        test_values = test_df.values
+
+        # Transform time series data into supervised learning format
+        data = series_to_supervised(test_values, n_in=14)
+
+        # Perform walk-forward validation and get MAE and model
+        mae, y, yhat, model = walk_forward_validation(data, 4, model_path=group_name)
+
+        output_model_list.append(model)
+        mae_list.append(mae)
+
+        # Plot expected vs predicted (optional)
+        plt.plot(y, label='Expected')
+        plt.plot(yhat, label='Predicted')
+        plt.legend()
+        plt.savefig(f"{group_name}.png")
+        plt.close()
+
+# Append model and MAE to the dataframe for output
+df['output_model'] = output_model_list
+df['mae'] = mae_list
+
+# Output the updated dataframe (can also save it as a file)
+output_table_1 = df.copy()
+
+# Example: df.to_csv('output_sales_predictions.csv', index=False)
