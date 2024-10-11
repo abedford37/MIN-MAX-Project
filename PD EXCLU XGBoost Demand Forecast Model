@@ -1,0 +1,53 @@
+# Predicting Demand for PD EXCLU Items
+# Created by Ashley Bedford
+
+# This project predicts demand for the past 4 weeks (-4 through -1) using the previous 10 weeks (-14 through -5)
+# of actual demand data for products. A total of 14 weeks are used, and XGBoost tracks historical data for improved predictions.
+
+import os
+import pickle
+import numpy as np
+import pandas as pd
+
+# Load sales data
+df = pd.DataFrame(input_table_1.copy())  # Replace with actual input, e.g., pd.read_csv('sales_data.csv')
+
+# Fill missing values (NaN) with 0 for the last 14 weeks
+for week in range(-1, -15, -1):
+    df[str(week)] = df[str(week)].fillna(0)
+
+# Iterate through the data to update predictions
+for i in df.index:
+    group_name = df.at[i, 'Grouping'].replace('/', '_') + '.pkl'
+    model_path = os.path.join(os.getcwd(), group_name)  # Save/load models in the current directory
+
+    # Check if 'date&time diff' is NaN
+    if pd.isna(df.at[i, 'date&time diff']):
+        continue
+
+    # Calculate active weeks from today
+    weeks_active = int(df.at[i, 'date&time diff'])
+
+    # If the model already exists, load it and predict demand
+    if os.path.exists(model_path):
+        with open(model_path, 'rb') as model_file:
+            model = pickle.load(model_file)
+
+        if weeks_active <= 0:
+            # Predict demand for inactive weeks (-14 to 0)
+            for y in range(-14, 0):
+                y_str = str(y)
+                if df.at[i, y_str] == 0:
+                    df.at[i, y_str] = model.predict([[df.at[i, y_str]]])[0]
+        else:
+            # Predict demand for active weeks
+            for y in range(-(weeks_active + 1), -15, -1):
+                y_str = str(y)
+                if df.at[i, y_str] == 0:
+                    df.at[i, y_str] = model.predict([[df.at[i, y_str]]])[0]
+
+# Output the updated DataFrame
+output_table_1 = df.copy()
+
+# If you want to save the result to a file:
+# df.to_csv('output_sales_predictions.csv', index=False)
