@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <config key="grouByColumns_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_filterString"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <config key="grouByColumns">
+            <config key="InclList">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="SUBCATEGORY"/>
+            </config>
+            <config key="ExclList">
+                <entry key="array-size" type="xint" value="133"/>
+                <entry key="0" type="xstring" value="COLORWAY_CD"/>
+                <entry key="1" type="xstring" value="ITEM_DESC"/>
+                <entry key="2" type="xstring" value="ITEM_ASSORTMENT_TYPE"/>
+                <entry key="3" type="xstring" value="SELLING_STATUS"/>
+                <entry key="4" type="xstring" value="DESIGNATED_VENDOR"/>
+                <entry key="5" type="xstring" value="SUPPLIER_NM"/>
+                <entry key="6" type="xstring" value="MASS"/>
+                <entry key="7" type="xstring" value="VOLUME"/>
+                <entry key="8" type="xstring" value="DENSITY"/>
+                <entry key="9" type="xstring" value="DMSN_DEPTH_IN"/>
+                <entry key="10" type="xstring" value="DMSN_HEIGHT_IN"/>
+                <entry key="11" type="xstring" value="DMSN_WIDTH_IN"/>
+                <entry key="12" type="xstring" value="WGHT_KG"/>
+                <entry key="13" type="xstring" value="WGHT_LB"/>
+                <entry key="14" type="xstring" value="WGHT_CARTON_LB"/>
+                <entry key="15" type="xstring" value="BOM_CBM_TOT"/>
+                <entry key="16" type="xstring" value="MKT_INTRO_DT"/>
+                <entry key="17" type="xstring" value="LAST_SOLD_DT"/>
+                <entry key="18" type="xstring" value="LAST_RECEIVED_DT"/>
+                <entry key="19" type="xstring" value="SOURCE_SYSTEM"/>
+                <entry key="20" type="xstring" value="IS_ACTIVE_ERP"/>
+                <entry key="21" type="xstring" value="COUNTRY"/>
+                <entry key="22" type="xstring" value="CART_PER_BOX"/>
+                <entry key="23" type="xstring" value="Total Lead Time Days"/>
+                <entry key="24" type="xstring" value="14 Week Sum (PD/PM/INTRO)"/>
+                <entry key="25" type="xstring" value="14 Week Sum (PD Exclu)"/>
+                <entry key="26" type="xstring" value="14 Week Sum"/>
+                <entry key="27" type="xstring" value="Sum(Sum Written Qty Component with Prediction)"/>
+                <entry key="28" type="xstring" value="7 Purchase Cycle Average per Day"/>
+                <entry key="29" type="xstring" value="[BPT Run Rate]"/>
+                <entry key="30" type="xstring" value="OHQ Service Level 3"/>
+                <entry key="31" type="xstring" value="Weekly OHQ Service Level 3"/>
+                <entry key="32" type="xstring" value="OHQ Service Level 4"/>
+                <entry key="33" type="xstring" value="Weekly OHQ Service Level 4"/>
+                <entry key="34" type="xstring" value="OHQ Service Level 5"/>
+                <entry key="35" type="xstring" value="Weekly OHQ Service Level 5"/>
+                <entry key="36" type="xstring" value="COLORWAY_CD_ORIGIN"/>
+                <entry key="37" type="xstring" value="REVISION"/>
+                <entry key="38" type="xstring" value="IS_LATEST_REVISION"/>
+                <entry key="39" type="xstring" value="Products[Colorway Code]"/>
+                <entry key="40" type="xstring" value="Replacement Freight Cost"/>
+                <entry key="41" type="xstring" value="Selling Status"/>
+                <entry key="42" type="xstring" value="Subcategory"/>
+                <entry key="43" type="xstring" value="Category"/>
+                <entry key="44" type="xstring" value="Collection"/>
+                <entry key="45" type="xstring" value="QA Sales Amt"/>
+                <entry key="46" type="xstring" value="QA Replacement Amt"/>
+                <entry key="47" type="xstring" value="QA Replacement Qty"/>
+                <entry key="48" type="xstring" value="TTM COGS"/>
+                <entry key="49" type="xstring" value="GM Amt"/>
+                <entry key="50" type="xstring" value="GM %"/>
+                <entry key="51" type="xstring" value="Rework Units"/>
+                <entry key="52" type="xstring" value="Scrap Units"/>
+                <entry key="53" type="xstring" value="Total Inspection Cost"/>
+                <entry key="54" type="xstring" value="Scrap Cost"/>
+                <entry key="55" type="xstring" value="Rework Cost"/>
+                <entry key="56" type="xstring" value="QA Defect Amt"/>
+                <entry key="57" type="xstring" value="QA Defect %"/>
+                <entry key="58" type="xstring" value="QA Defect Qty"/>
+                <entry key="59" type="xstring" value="Description"/>
+                <entry key="60" type="xstring" value="Standard Cost"/>
+                <entry key="61" type="xstring" value="Items"/>
+                <entry key="62" type="xstring" value="Units Inspected"/>
+                <entry key="63" type="xstring" value="Expected GM Amt"/>
+                <entry key="64" type="xstring" value="Original + Replacement (Calculation)"/>
+                <entry key="65" type="xstring" value="Expected GM %"/>
+                <entry key="66" type="xstring" value="Target GM Amt"/>
+                <entry key="67" type="xstring" value="Original + Replacement - Defects (Calculation)"/>
+                <entry key="68" type="xstring" value="Target GM %"/>
+                <entry key="69" type="xstring" value="Actual GM Amt"/>
+                <entry key="70" type="xstring" value="Orig + Rep - Defect - Rep Freight (Calculation)"/>
+                <entry key="71" type="xstring" value="Actual GM %"/>
+                <entry key="72" type="xstring" value="Scrap + Rework + Total Inspection (Calculation)"/>
+                <entry key="73" type="xstring" value="Adjusted Margin %"/>
+                <entry key="74" type="xstring" value="Sum(Original + Replacement (Calculation))"/>
+                <entry key="75" type="xstring" value="AGM % Aggregated"/>
+                <entry key="76" type="xstring" value="ABC Rank (Cleaned)"/>
+                <entry key="77" type="xstring" value="Products[Colorway Code] (right)"/>
+                <entry key="78" type="xstring" value="[Sales Order Amt]"/>
+                <entry key="79" type="xstring" value="[COGs Amt]"/>
+                <entry key="80" type="xstring" value="[TTM Average Inventory]"/>
+                <entry key="81" type="xstring" value="[GM %]"/>
+                <entry key="82" type="xstring" value="[GM Amt]"/>
+                <entry key="83" type="xstring" value="Products[Transaction Colorway Code]"/>
+                <entry key="84" type="xstring" value="[Written Amt]"/>
+                <entry key="85" type="xstring" value="[TTM COGS]"/>
+                <entry key="86" type="xstring" value="Products[Transaction Colorway Code] (right)"/>
+                <entry key="87" type="xstring" value="[QA Field Defect Amt]"/>
+                <entry key="88" type="xstring" value="[QA Replacement Amt]"/>
+                <entry key="89" type="xstring" value="Products[Transaction Colorway Code] (right) (right)"/>
+                <entry key="90" type="xstring" value="Products[Freight Cost]"/>
+                <entry key="91" type="xstring" value="AGM (Minus Scrap/Inspection/Rework)"/>
+                <entry key="92" type="xstring" value="Sum([Sales Order Amt])"/>
+                <entry key="93" type="xstring" value="Sum([GM Amt])"/>
+                <entry key="94" type="xstring" value="Sum([QA Field Defect Amt])"/>
+                <entry key="95" type="xstring" value="Sum([QA Replacement Amt])"/>
+                <entry key="96" type="xstring" value="Sum(Products[Freight Cost])"/>
+                <entry key="97" type="xstring" value="AGM (Cutover Rollup SUM)"/>
+                <entry key="98" type="xstring" value="AGM Numbers"/>
+                <entry key="99" type="xstring" value="Final AGM Numbers"/>
+                <entry key="100" type="xstring" value="Profitability Level"/>
+                <entry key="101" type="xstring" value="Max*(QA Field Defect (Final))"/>
+                <entry key="102" type="xstring" value="Products[Transaction Colorway Code] (right) (right) (right)"/>
+                <entry key="103" type="xstring" value="Products[Primary Material Subtype]"/>
+                <entry key="104" type="xstring" value="Products[Secondary Material Subtype]"/>
+                <entry key="105" type="xstring" value="Products[Tertiary Material Subtype]"/>
+                <entry key="106" type="xstring" value="Fragility"/>
+                <entry key="107" type="xstring" value="COLORWAY_CD_ORIGIN (right)"/>
+                <entry key="108" type="xstring" value="Max*(REVISION)"/>
+                <entry key="109" type="xstring" value="DISC TO AUSTIN ELIGIBLE"/>
+                <entry key="110" type="xstring" value="EXCLU TO AUSTIN ELIGIBLE"/>
+                <entry key="111" type="xstring" value="ACTION"/>
+                <entry key="112" type="xstring" value="MISC/PART/SWATCH AS AUSTIN"/>
+                <entry key="113" type="xstring" value="ACTION (FINAL)"/>
+                <entry key="114" type="xstring" value="Multiple Value"/>
+                <entry key="115" type="xstring" value="ABC Demand Calculation Value"/>
+                <entry key="116" type="xstring" value="MIN Qty Value"/>
+                <entry key="117" type="xstring" value="OPHQ Qty Value"/>
+                <entry key="118" type="xstring" value="MAX Qty Value"/>
+                <entry key="119" type="xstring" value="DIM Weight"/>
+                <entry key="120" type="xstring" value="Length DIM"/>
+                <entry key="121" type="xstring" value="Girth"/>
+                <entry key="122" type="xstring" value="Parcel Eligibility"/>
+                <entry key="123" type="xstring" value="M2 Zone"/>
+                <entry key="124" type="xstring" value="AUSTIN+Sum(Shipper %)"/>
+                <entry key="125" type="xstring" value="BUDA 2+Sum(Shipper %)"/>
+                <entry key="126" type="xstring" value="BUDA 3+Sum(Shipper %)"/>
+                <entry key="127" type="xstring" value="NO CARRIER+Sum(Shipper %)"/>
+                <entry key="128" type="xstring" value="Soft Goods"/>
+                <entry key="129" type="xstring" value="Buda DIM Weight Pricing not apply?"/>
+                <entry key="130" type="xstring" value="Buda Weight not over Parcel?"/>
+                <entry key="131" type="xstring" value="Range(BOM_CBM_TOT)"/>
+                <entry key="132" type="xstring" value="Min*(BOM_CBM_TOT)"/>
+            </config>
+            <entry key="keep_all_columns_selected" type="xboolean" value="false"/>
+        </config>
+        <config key="maxNoneNumericalVals_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="maxNoneNumericalVals" type="xint" value="10000"/>
+        <config key="enableHilite_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="enableHilite" type="xboolean" value="false"/>
+        <config key="sortInMemory_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="sortInMemory" type="xboolean" value="false"/>
+        <config key="aggregationColumn">
+            <config key="columnNames">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="7 Purchase Cycle Average per Day"/>
+            </config>
+            <config key="columnTypes">
+                <entry key="array-size" type="xint" value="1"/>
+                <config key="0">
+                    <entry key="cell_class" type="xstring" value="org.knime.core.data.def.DoubleCell"/>
+                    <entry key="is_null" type="xboolean" value="false"/>
+                </config>
+            </config>
+            <config key="aggregationMethod">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="Mean"/>
+            </config>
+            <config key="inclMissingVals">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xboolean" value="false"/>
+            </config>
+        </config>
+        <config key="aggregationOperatorSettings"/>
+        <config key="patternAggregators"/>
+        <config key="dataTypeAggregators"/>
+        <config key="columnNamePolicy_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="columnNamePolicy" type="xstring" value="Aggregation method (column name)"/>
+        <config key="retainOrder_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="retainOrder" type="xboolean" value="false"/>
+        <config key="inMemory_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="inMemory" type="xboolean" value="false"/>
+        <config key="valueDelimiter_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="valueDelimiter" type="xstring" value=", "/>
+        <config key="nodeVersion_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="nodeVersion" type="xint" value="1"/>
+        <entry key="typeMatch" type="xbyte" value="0"/>
+    </config>
+    <config key="nodeAnnotation">
+        <entry key="text" type="xstring" value="Group by Campus%%00013%%00010 Designation to calculate%%00013%%00010MIN &amp; Range CBM%%00013%%00010Values"/>
+        <entry key="bgcolor" type="xint" value="16777215"/>
+        <entry key="x-coordinate" type="xint" value="1253"/>
+        <entry key="y-coordinate" type="xint" value="638"/>
+        <entry key="width" type="xint" value="135"/>
+        <entry key="height" type="xint" value="60"/>
+        <entry key="alignment" type="xstring" value="CENTER"/>
+        <entry key="borderSize" type="xint" value="0"/>
+        <entry key="borderColor" type="xint" value="16777215"/>
+        <entry key="defFontSize" type="xint" value="9"/>
+        <entry key="annotation-version" type="xint" value="20151123"/>
+        <config key="styles"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="IDLE"/>
+    <entry key="factory" type="xstring" value="org.knime.base.node.preproc.groupby.GroupByNodeFactory"/>
+    <entry key="node-name" type="xstring" value="GroupBy"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME Base Nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.base"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="4.4.0.v202106241539"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Base nodes"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="4.4.0.v202106261936"/>
+    <config key="factory_settings"/>
+    <entry key="name" type="xstring" value="GroupBy"/>
+    <entry key="hasContent" type="xboolean" value="false"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" isnull="true" value=""/>
+    </config>
+</config>
